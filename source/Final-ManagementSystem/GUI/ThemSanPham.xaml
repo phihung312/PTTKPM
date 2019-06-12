@@ -1,0 +1,80 @@
+﻿<Window x:Class="Final_ManagementSystem.ThemSanPham"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Final_ManagementSystem"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+        Title="ThemSanPham" Height="420" Width="530">
+    <Canvas>
+
+
+        <TextBlock FontSize="15" Text="Tên sản phẩm" Canvas.Left="174" Canvas.Top="54"></TextBlock>
+        <TextBox x:Name="TenSP_Textbox" 
+                 FontSize="15"
+                 Height="40" Width="200"
+                 Canvas.Left="295"
+                 RenderTransformOrigin="0.624,0.506" 
+                 Canvas.Top="36" ></TextBox>
+        <TextBlock FontSize="15" Text="Loại sản phẩm" Canvas.Left="174" Canvas.Top="105" ></TextBlock>
+        <ComboBox FontSize="15" 
+                  SelectionChanged="LoaiSP_ComboBox_SelectionChanged"
+                 x:Name="LoaiSP_ComboBox"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="81"
+                 ></ComboBox>
+        <TextBox x:Name="LoaiSP_Textbox"
+                 FontSize="13"
+                 materialDesign:HintAssist.Hint= "Nhập tên loại sản phẩm"
+                   materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                 Visibility="Hidden"
+                 Height="30" Width="200" Canvas.Left="295" Canvas.Top="126"
+                 ></TextBox>
+        <TextBlock FontSize="15" Text="Giá gốc(VND)" Canvas.Left="174" Canvas.Top="171"></TextBlock>
+        <TextBox x:Name="GiaGoc_Textbox" 
+                 FontSize="15"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="151"></TextBox>
+        <TextBlock FontSize="15" Text="Giá bán(VND)" Canvas.Left="174" Canvas.Top="218"></TextBlock>
+        <TextBox x:Name="GiaBan_TextBox" 
+                 FontSize="15"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="201"></TextBox>
+        <TextBlock FontSize="15" Text="Số lượng" Canvas.Left="174" Canvas.Top="256"></TextBlock>
+        <TextBox x:Name="Soluong_Textbox" 
+                 HorizontalContentAlignment="Center"
+                 FontSize="15"
+                 Height="40" Width="50" Canvas.Left="357" Canvas.Top="236" RenderTransformOrigin="0.228,0.359" 
+                 TextChanged="Soluong_Textbox_TextChanged"></TextBox>
+        <Fluent:Button Name="Subtract_Button" Height="30" Canvas.Left="324" Canvas.Top="248"
+                       LargeIcon="Image/subtract.png"
+                       
+                       Click="Subtract_Button_Click"
+                       ></Fluent:Button>
+        <Fluent:Button Name="Plus_Button"
+                       
+                       LargeIcon="Image/plus.png"
+                       Click="Plus_Button_Click"
+                       Canvas.Left="403" Canvas.Top="248" Height="30"></Fluent:Button>
+        <Image 
+         
+            x:Name="HinhAnh_Image" Height="190" Width="160" Canvas.Left="8" Canvas.Top="72" ></Image>
+
+        <Button x:Name="CapNhatHinhAnh_Button"
+            
+            Click="SuaHinhAnh_Button_Click"
+            Content="Cập nhật ảnh" Canvas.Left="32" Canvas.Top="274"></Button>
+        <Fluent:Button x:Name="SuaHinhAnh_Button"
+            Height="100" Width="100"
+            Cursor="UpArrow"
+            
+            Background="Transparent"
+            Click="SuaHinhAnh_Button_Click"           
+            Canvas.Left="39" Canvas.Top="116" ></Fluent:Button>
+        <Button x:Name="Luu_Button"
+                Height="40" Width="70"
+                Click="Luu_Button_Click"
+                Content="Thêm" Canvas.Left="279" Canvas.Top="292"></Button>
+
+    </Canvas>
+</Window>

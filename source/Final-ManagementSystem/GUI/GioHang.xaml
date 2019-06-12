@@ -1,0 +1,91 @@
+﻿<Page x:Class="Final_ManagementSystem.GioHang"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Final_ManagementSystem"
+      xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+    
+
+    mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="GioHang"
+      Loaded="Page_Loaded"
+      >
+    <Canvas>
+        <DataGrid AutoGenerateColumns="False" 
+          Height="300" 
+          HorizontalAlignment="Left" 
+          Name="DanhSachSPDataGrid" 
+          VerticalAlignment="Center" 
+          Width="476" AlternatingRowBackground="White" 
+          IsReadOnly="True"
+                  CanUserAddRows="False"
+                 
+                  Loaded="DanhSachSPDataGrid_Loaded"    
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=TenSP}" IsReadOnly="True" Width="140" CanUserResize="False" Header="Tên sản phẩm"/>
+
+
+
+                <DataGridTemplateColumn  Width="70" Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="SubtractButton_Click" FontSize="20" VerticalAlignment="Center"  Foreground="White">-</Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Path=SoLuong}"  CanUserResize="False" Header="SL"></DataGridTextColumn>
+                <DataGridTemplateColumn  Width="70" Header="">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Click="PlusButton_Click" VerticalAlignment="Center" FontSize="20"  Foreground="White">+</Button>
+
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTextColumn Binding="{Binding Path=GiaBan}"  CanUserResize="False" Header="Giá(VND)" ></DataGridTextColumn>
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <TextBlock Text="Mã khuyễn mãi" FontSize="15" Canvas.Left="110" Canvas.Top="309"></TextBlock>
+        <TextBox x:Name="MaKM_TextBox" Width="100" FontSize="15" Canvas.Left="311" Canvas.Top="303" TextChanged="MaKM_TextBox_TextChanged" ></TextBox>
+        <TextBlock Text="Tổng tiền:" FontSize="15" Canvas.Left="110" Canvas.Top="340" ></TextBlock>
+        <TextBlock x:Name="TongTien_TextBlock" Width="100" Height="30" FontSize="15" Canvas.Left="311" Canvas.Top="340"></TextBlock>
+        <ComboBox x:Name="CachThanhToan_ComboBox"
+                  Loaded="CachThanhToan_ComboBox_Loaded"
+                  
+                  Width="150" Canvas.Left="308"
+                  Canvas.Top="368" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+
+                        <TextBlock Text="{Binding Ten}" Foreground="Red" FontWeight="Bold"></TextBlock>
+
+                    </WrapPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+        <TextBlock Text="Phương thức thanh toán:" FontSize="15" Canvas.Left="110" Canvas.Top="378"></TextBlock>
+
+
+        <TextBlock FontSize="15" Text="Tên:" Canvas.Left="506" Canvas.Top="22"></TextBlock>
+        <TextBox x:Name="TenKH_TextBox" 
+                 FontSize="15"
+                 Width="250" Canvas.Left="537" Canvas.Top="16"></TextBox>
+        <TextBlock FontSize="15" Text="SĐT:" Canvas.Left="506" Canvas.Top="89"></TextBlock>
+        <TextBox x:Name="SDT_TextBox" FontSize="15" Width="250" Canvas.Left="541" Canvas.Top="80" ></TextBox>
+        <TextBlock FontSize="15" Text="D/C:" Canvas.Left="506" Canvas.Top="154"></TextBlock>
+        <TextBox x:Name="DC_TextBox" FontSize="15" Width="250" Canvas.Left="537" Canvas.Top="148"></TextBox>
+        <Button x:Name="ThanhToan_Button" 
+                Content="THANH TOÁN"
+                FontSize="18"
+                Click="ThanhToan_Button_Click"
+                Width="150" Height="100" Canvas.Left="599" Canvas.Top="309" ></Button>
+
+    </Canvas>
+</Page>

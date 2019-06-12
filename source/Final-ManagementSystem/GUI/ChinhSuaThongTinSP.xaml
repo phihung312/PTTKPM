@@ -1,0 +1,91 @@
+﻿<Window x:Class="Final_ManagementSystem.ChinhSuaThongTinSP"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Final_ManagementSystem"
+        xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+        mc:Ignorable="d"
+        Loaded="Window_Loaded"
+        
+        Title="Chỉnh sửa thông tin sản phẩm" Height="420" Width="530">
+    <Canvas>
+        <TextBlock FontSize="15" Text="Mã sản phẩm" Canvas.Left="174" Canvas.Top="62"></TextBlock>
+        <TextBox x:Name="MaSP_textbox" FontSize="15"
+                 IsEnabled="False"  
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="42" RenderTransformOrigin="0.556,1.002"></TextBox>
+
+         <ComboBox FontSize="15" 
+                  SelectionChanged="LoaiSP_ComboBox_SelectionChanged"
+                 x:Name="LoaiSP_ComboBox" 
+                   Visibility="Hidden"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="166"
+                 ></ComboBox>
+        <TextBlock FontSize="15" Text="Tên sản phẩm" Canvas.Left="174" Canvas.Top="100"></TextBlock>
+        <TextBox x:Name="TenSP_Textbox" IsEnabled="False"
+                 FontSize="15"
+                 Height="40" Width="200"
+                 Canvas.Left="295"
+                 RenderTransformOrigin="0.624,0.506" 
+                 Canvas.Top="82" ></TextBox>
+        <TextBlock FontSize="15" Text="Loại sản phẩm" Canvas.Left="174" Canvas.Top="151" ></TextBlock>
+        <TextBox FontSize="15" IsEnabled="False"
+                 x:Name="LoaiSP_Textbox"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="127"
+                 ></TextBox>
+        <TextBlock FontSize="15" Text="Giá gốc(VND)" Canvas.Left="174" Canvas.Top="217"></TextBlock>
+        <TextBox x:Name="GiaGoc_Textbox"  IsEnabled="False"
+                 FontSize="15"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="197"></TextBox>
+        <TextBlock FontSize="15" Text="Giá bán(VND)" Canvas.Left="174" Canvas.Top="264"></TextBlock>
+        <TextBox x:Name="GiaBan_TextBox" IsEnabled="False"
+                 FontSize="15"
+                 Height="40" Width="200" Canvas.Left="295" Canvas.Top="247"></TextBox>
+        <TextBlock FontSize="15" Text="Số lượng" Canvas.Left="174" Canvas.Top="302"></TextBlock>
+        <TextBox x:Name="Soluong_Textbox" IsEnabled="False"
+                 HorizontalContentAlignment="Center"
+                 FontSize="15"
+                 Height="40" Width="50" Canvas.Left="357" Canvas.Top="282" RenderTransformOrigin="0.228,0.359" 
+                 TextChanged="Soluong_Textbox_TextChanged"></TextBox>
+        <Fluent:Button Name="Subtract_Button" Height="30" Canvas.Left="324" Canvas.Top="278"
+                       LargeIcon="Image/subtract.png"
+                       Visibility="Hidden"
+                       Click="Subtract_Button_Click"
+                       ></Fluent:Button>
+        <Fluent:Button Name="Plus_Button"
+                       Visibility="Hidden"
+                       LargeIcon="Image/plus.png"
+                       Click="Plus_Button_Click"
+                       Canvas.Left="403" Canvas.Top="278" Height="30"></Fluent:Button>
+        <Image 
+         
+            x:Name="HinhAnh_Image" Height="190" Width="160" Canvas.Left="8" Canvas.Top="72" ></Image>
+        <Fluent:Button Name="Update_Button"
+                       Header="Chỉnh sửa" Canvas.Left="413" Canvas.Top="10" Height="34" Width="32"
+                       LargeIcon="Image/update.png"
+                       Click="Update_Button_Click"
+                       ></Fluent:Button>
+        <Fluent:Button Name="Delete_Button"
+                       Header="Xóa" Canvas.Left="458" Canvas.Top="10" Height="40" RenderTransformOrigin="0.862,0.604"
+                       LargeIcon="Image/delete.png"
+                       Click="Delete_Button_Click"
+                       ></Fluent:Button>
+        <Button x:Name="CapNhatHinhAnh_Button"
+            Visibility="Hidden"
+            Click="SuaHinhAnh_Button_Click"
+            Content="Cập nhật ảnh" Canvas.Left="30" Canvas.Top="274"></Button>
+        <Fluent:Button x:Name="SuaHinhAnh_Button"
+            Height="100" Width="100"
+            Cursor="UpArrow"
+            Visibility="Hidden"
+            Background="Transparent"
+            Click="SuaHinhAnh_Button_Click"           
+            Canvas.Left="39" Canvas.Top="116" ></Fluent:Button>
+        <Button x:Name="Luu_Button"
+                Height="40" Width="70"
+                Visibility="Hidden"
+                Click="Luu_Button_Click"
+                Content="Lưu" Canvas.Left="279" Canvas.Top="322"></Button>
+
+    </Canvas>
+</Window>
