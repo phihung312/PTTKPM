@@ -133,11 +133,11 @@
     <Compile Include="GUI\DanhSachSanPham.xaml.cs">
       <DependentUpon>DanhSachSanPham.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\DonHang.xaml.cs">
-      <DependentUpon>DonHang.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GUI\GioHang.xaml.cs">
       <DependentUpon>GioHang.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\Sort.cs" />
     <Compile Include="GUI\ThemKhuyenMai.xaml.cs">
@@ -145,6 +145,9 @@
     </Compile>
     <Compile Include="GUI\ThemSanPham.xaml.cs">
       <DependentUpon>ThemSanPham.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\QuanLyDonHang.xaml.cs">
+      <DependentUpon>QuanLyDonHang.xaml</DependentUpon>
     </Compile>
     <Page Include="GUI\BanHang.xaml">
       <SubType>Designer</SubType>
@@ -158,11 +161,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\DonHang.xaml">
+    <Page Include="GUI\GioHang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\GioHang.xaml">
+    <Page Include="GUI\Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -183,6 +186,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\ThemSanPham.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\QuanLyDonHang.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,6 +275,12 @@
       <DependentUpon>QuanLyCuaHang.edmx</DependentUpon>
       <LastGenOutput>QuanLyCuaHang.cs</LastGenOutput>
     </Content>
+    <Resource Include="Image\icon.png" />
+    <Resource Include="Image\login\background.jpg" />
+    <Resource Include="Image\login\fb.png" />
+    <Resource Include="Image\login\gg.png" />
+    <Resource Include="Image\login\line.png" />
+    <Resource Include="Image\login\skype.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

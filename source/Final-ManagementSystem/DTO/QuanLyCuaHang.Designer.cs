@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\tranp\OneDrive\Desktop\1612225_FINAl\Source\Final-ManagementSystem\Final-ManagementSystem\DTO\QuanLyCuaHang.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\ISE_NMH_10\PTTKPM\source\Final-ManagementSystem\DTO\QuanLyCuaHang.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

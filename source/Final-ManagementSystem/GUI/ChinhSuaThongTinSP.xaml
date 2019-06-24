@@ -57,9 +57,9 @@
                        LargeIcon="Image/plus.png"
                        Click="Plus_Button_Click"
                        Canvas.Left="403" Canvas.Top="278" Height="30"></Fluent:Button>
-        <Image 
-         
-            x:Name="HinhAnh_Image" Height="190" Width="160" Canvas.Left="8" Canvas.Top="72" ></Image>
+        <Image Source="{Binding HinhAnh}"
+            
+            x:Name="HinhAnh_Image"  Height="190" Width="160" Canvas.Left="8" Canvas.Top="72" ></Image>
         <Fluent:Button Name="Update_Button"
                        Header="Chỉnh sửa" Canvas.Left="413" Canvas.Top="10" Height="34" Width="32"
                        LargeIcon="Image/update.png"

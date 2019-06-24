@@ -29,7 +29,7 @@ namespace Final_ManagementSystem
         List<LoaiSanPham> dsLoaiSp = new List<LoaiSanPham>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var db = new QuanLyCuaHangEntities();
+           
             LoaiSanPham_Bus loaiSanPham_Bus = new LoaiSanPham_Bus();
             dsLoaiSp = loaiSanPham_Bus.LoadAll();
 

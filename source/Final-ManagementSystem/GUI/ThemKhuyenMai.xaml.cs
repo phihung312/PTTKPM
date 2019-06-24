@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Final_ManagementSystem.DTO;
+using Final_ManagementSystem.BUS;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,31 +28,32 @@ namespace Final_ManagementSystem
 
         private void ThemKM_Button_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    var db = new QuanLyCuaHangEntities();
-            //    KhuyenMai km = new KhuyenMai();
-            //    km.MaKM = MaKM_TextBox.Text;
-            //    km.TenKM = TenKM_TextBox.Text;
-            //    km.MucKM =int.Parse( MucKM_TextBox.Text);
-            //    db.KhuyenMais.Add(km);
-            //    db.SaveChanges();
-            //    MessageBox.Show("Thêm mã khuyến mãi thành công!");
-            //    MaKM_TextBox.Text = "";
-            //    TenKM_TextBox.Text = "";
-            //    MucKM_TextBox.Text = "";
-            //}
-            //catch(Exception)
-            //{
-            //    MessageBox.Show("Thêm không thành công vui lòng kiểm tra lại");
-            //}
-            //DanhSachKMDataGrid_Loaded(null, null);
+            try
+            {
+                var db = new QuanLyCuaHangEntities();
+                KhuyenMai_Bus khuyenMai_Bus = new KhuyenMai_Bus();
+                KhuyenMai km = new KhuyenMai();
+                km.MaKhuyenMai = MaKM_TextBox.Text;
+                km.TenKhuyenMai = TenKM_TextBox.Text;
+                km.MucKhuyenMai = int.Parse(MucKM_TextBox.Text);
+                khuyenMai_Bus.AddKhuyenMai(km);
+                db.SaveChanges();
+                MessageBox.Show("Thêm mã khuyến mãi thành công!");
+                MaKM_TextBox.Text = "";
+                TenKM_TextBox.Text = "";
+                MucKM_TextBox.Text = "";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Thêm không thành công vui lòng kiểm tra lại");
+            }
+            DanhSachKMDataGrid_Loaded(null, null);
         }
 
         private void DanhSachKMDataGrid_Loaded(object sender, RoutedEventArgs e)
         {
-            //var db = new QuanLyCuaHangEntities();
-            //DanhSachKMDataGrid.ItemsSource = db.KhuyenMais.ToList();
+            KhuyenMai_Bus khuyenMaiBus = new KhuyenMai_Bus();
+            DanhSachKMDataGrid.ItemsSource = khuyenMaiBus.LoadAll();
         }
     }
 }

@@ -26,9 +26,9 @@
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" Canvas.Left="12">
             <DataGrid.Columns>
 
-                <DataGridTextColumn Binding="{Binding Path=MaKM}" CanUserResize="False" Header="Mã khuyễn mãi"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Path=TenKM}" CanUserResize="False" Header="Tên khuyễn mãi"></DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding  Path=MucKM}" CanUserResize="False" Header="Mức khuyễn mãi"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=MaKhuyenMai}" CanUserResize="False" Header="Mã khuyễn mãi"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Path=TenKhuyenMai}" CanUserResize="False" Header="Tên khuyễn mãi"></DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding  Path=MucKhuyenMai}" CanUserResize="False" Header="Mức khuyễn mãi"></DataGridTextColumn>
             </DataGrid.Columns>
 
         </DataGrid>

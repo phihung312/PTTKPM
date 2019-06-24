@@ -17,7 +17,7 @@
             <PropertyRef Name="MaDongHang" />
             <PropertyRef Name="MaSanPham" />
           </Key>
-          <Property Name="MaDongHang" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaDongHang" Type="int" Nullable="false" />
           <Property Name="MaSanPham" Type="int" Nullable="false" />
           <Property Name="MaKhachHang" Type="int" Nullable="false" />
           <Property Name="SoLuong" Type="int" Nullable="false" />
@@ -215,7 +215,7 @@
             <PropertyRef Name="MaDongHang" />
             <PropertyRef Name="MaSanPham" />
           </Key>
-          <Property Name="MaDongHang" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaDongHang" Type="Int32" Nullable="false" />
           <Property Name="MaSanPham" Type="Int32" Nullable="false" />
           <Property Name="MaKhachHang" Type="Int32" Nullable="false" />
           <Property Name="SoLuong" Type="Int32" Nullable="false" />

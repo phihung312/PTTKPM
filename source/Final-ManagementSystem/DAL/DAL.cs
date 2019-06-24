@@ -166,7 +166,14 @@ namespace Final_ManagementSystem.DAL
     }
     public class KhachHang_DAL
     {
-      
+
+        public List<KhachHang> LoadAll()
+        {
+
+            var db = new QuanLyCuaHangEntities();
+            var khachHangs = db.KhachHangs.ToList();
+            return khachHangs;
+        }
         public bool AddKhachHang(KhachHang khachHang )
         {
             try
@@ -183,5 +190,72 @@ namespace Final_ManagementSystem.DAL
             return false;
 
         }
+    }
+    public class DonHang_DAL
+    {
+
+        public List<DonHang> LoadAll()
+        {
+
+            var db = new QuanLyCuaHangEntities();
+            var donHangs = db.DonHangs.ToList();
+            return donHangs;
+        }
+        public bool AddDonHang(DonHang donHang)
+        {
+            try
+            {
+                var db = new QuanLyCuaHangEntities();
+                db.DonHangs.Add(donHang);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+
+            }
+            return false;
+
+        }
+        public bool EditDonHang(DonHang donHang)
+        {
+            try
+            {
+                var db = new QuanLyCuaHangEntities();
+
+                var donHang1 = db.DonHangs.Find(donHang.MaDongHang, donHang.MaSanPham);
+              
+                donHang1.TinhTrang = donHang.TinhTrang;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+
+            }
+            return false;
+
+        }
+        public List<DonHang> FindByID(int i)
+        {
+            List<DonHang> query;
+            using (var db = new QuanLyCuaHangEntities())
+            {
+                query = db.DonHangs.Where(s => s.MaDongHang == i).ToList();
+            }
+            return query;
+        }
+    }
+    public class TaiKhoan_DAL
+    {
+
+        public List<TaiKhoan> LoadAll()
+        {
+
+            var db = new QuanLyCuaHangEntities();
+            var TaiKhoan = db.TaiKhoans.ToList();
+            return TaiKhoan;
+        }
+       
     }
 }

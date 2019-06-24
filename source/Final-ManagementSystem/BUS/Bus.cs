@@ -92,10 +92,48 @@ namespace Final_ManagementSystem.BUS
     public class KhachHang_Bus
     {
         KhachHang_DAL KhachHang_DAL = new KhachHang_DAL();
+
+        public List<KhachHang> LoadAll()
+        {
+            return KhachHang_DAL.LoadAll();
+        }
         public bool AddKhachHang(KhachHang khachHang)
         {
             return KhachHang_DAL.AddKhachHang(khachHang);
         }
+    }
+    public class DonHang_Bus
+    {
+        DonHang_DAL DonHang_DAL = new DonHang_DAL();
+
+        public List<DonHang> LoadAll()
+        {
+            return DonHang_DAL.LoadAll();
+           
+        }
+        public bool AddDonHang(DonHang donHang)
+        {
+            return DonHang_DAL.AddDonHang(donHang);
+        }
+        public bool EditDonHang(DonHang donHang)
+        {
+            return DonHang_DAL.EditDonHang(donHang);
+
+        }
+        public List<DonHang> FindByID(int i)
+        {
+            return DonHang_DAL.FindByID(i);
+        }
+    }
+    public class TaiKhoan_Bus
+    {
+        
+        public List<TaiKhoan> LoadAll()
+        {
+            TaiKhoan_DAL taiKhoan_Dal = new TaiKhoan_DAL();
+            return taiKhoan_Dal.LoadAll();
+        }
+
     }
 }
 

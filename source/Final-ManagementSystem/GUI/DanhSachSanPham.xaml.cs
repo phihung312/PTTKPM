@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Final_ManagementSystem.DTO;
 using Final_ManagementSystem.BUS;
+using Final_ManagementSystem.DTO;
 using Fluent;
 namespace Final_ManagementSystem
 {
@@ -144,10 +144,16 @@ namespace Final_ManagementSystem
                 chinhSuaThongTinSP.GiaGoc_Textbox.Text = dsSP[DanhSachSPDataGrid.SelectedIndex].GiaGoc.ToString();
                 chinhSuaThongTinSP.GiaBan_TextBox.Text = dsSP[DanhSachSPDataGrid.SelectedIndex].GiaBan.ToString();
                 chinhSuaThongTinSP.Soluong_Textbox.Text = dsSP[DanhSachSPDataGrid.SelectedIndex].SoLuongConLai.ToString();
-                if (dsSP[DanhSachSPDataGrid.SelectedIndex].HinhAnh != null)
-                {
-                    chinhSuaThongTinSP.HinhAnh_Image.Source = new BitmapImage(new Uri(dsSP[DanhSachSPDataGrid.SelectedIndex].HinhAnh, UriKind.Relative));
-                }
+
+                
+                BitmapImage bm = new BitmapImage();
+                bm.BeginInit();
+                bm.UriSource = new Uri(dsSP[DanhSachSPDataGrid.SelectedIndex].HinhAnh, UriKind.RelativeOrAbsolute);
+                bm.EndInit();
+
+                chinhSuaThongTinSP.HinhAnh_Image.Source = bm;
+              
+                
                 chinhSuaThongTinSP.ShowDialog();
                 DanhSachSPDataGrid_Loaded(null, null);
                 LoaiSP_ComboBox_Loaded(null, null);

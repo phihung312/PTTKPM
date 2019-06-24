@@ -25,9 +25,9 @@ namespace Final_ManagementSystem
         public GioHang()
         {
             InitializeComponent();
-            
+
         }
-       
+
         public class Data
         {
             public int maSP { get; set; }
@@ -36,11 +36,11 @@ namespace Final_ManagementSystem
             public int GiaBan { get; set; }
         }
         List<Data> datas = new List<Data>();
-        int tongTien=0;
+        int tongTien = 0;
         List<SanPham> sanPhams = new List<SanPham>();
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            
+
             sanPhams = BanHang.dsSpMua;
             if (sanPhams != null)
             {
@@ -64,24 +64,24 @@ namespace Final_ManagementSystem
             DanhSachSPDataGrid.ItemsSource = null;
 
             DanhSachSPDataGrid.ItemsSource = datas;
-           
+
 
         }
 
 
 
-      
+
         private void CachThanhToan_ComboBox_Loaded(object sender, RoutedEventArgs e)
         {
             var ctt = new CachThanhToan_Bus();
             var ctts = ctt.LoadAll();
-            
+
             CachThanhToan_ComboBox.ItemsSource = ctts;
         }
 
         private void MaKM_TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-           
+
             KhuyenMai_Bus khuyenMai_Bus = new KhuyenMai_Bus();
             var KMs = khuyenMai_Bus.LoadAll();
             if (KMs != null)
@@ -90,7 +90,7 @@ namespace Final_ManagementSystem
                 {
                     if (MaKM_TextBox.Text == KMs[i].MaKhuyenMai)
                     {
-                        tongTien -= tongTien * KMs[i].MucKhuyenMai/100;
+                        tongTien -= tongTien * KMs[i].MucKhuyenMai / 100;
                         TongTien_TextBlock.Text = tongTien.ToString() + " VND";
                         MaKM_TextBox.Text = KMs[i].MaKhuyenMai;
                     }
@@ -108,108 +108,117 @@ namespace Final_ManagementSystem
             var db = new QuanLyCuaHangEntities();
             DsKH = db.KhachHangs.ToList();
             DsDH = db.DonHangs.ToList();
-                        //try
+            //try
             //{
-                if (CachThanhToan_ComboBox.SelectedIndex == 1 && (DC_TextBox.Text == "" || SDT_TextBox.Text == ""))
+            if (CachThanhToan_ComboBox.SelectedIndex == 1 && (DC_TextBox.Text == "" || SDT_TextBox.Text == ""))
+            {
+                MessageBox.Show("Bạn phải nhập số điện thoại và địa chỉ để chuyển hàng");
+                kiemTra = 0;
+
+            }
+            else
+            {
+
+
+                KH.TenKhachHang = TenKH_TextBox.Text;
+                KH.SoDienThoai = SDT_TextBox.Text;
+                KH.DiaChi = DC_TextBox.Text;
+                //KH.isDelete = false;
+                KhachHang_Bus khachHang_Bus = new KhachHang_Bus();
+
+                khachHang_Bus.AddKhachHang(KH);
+                var a= khachHang_Bus.LoadAll();
+                DH.MaKhachHang =KH.MaKhachHang ;
+
+
+                if (MaKM_TextBox.Text != "")
                 {
-                    MessageBox.Show("Bạn phải nhập số điện thoại và địa chỉ để chuyển hàng");
-                    kiemTra = 0;
+
+
+                    KhuyenMai_Bus khuyenMai_Bus = new KhuyenMai_Bus();
+
+                    var KMs = khuyenMai_Bus.LoadAll();
+                    if (KMs != null)
+                    {
+                        for (int i = 0; i < KMs.Count(); i++)
+                        {
+                            if (MaKM_TextBox.Text == KMs[i].MaKhuyenMai)
+                            {
+                                km = KMs[i].MucKhuyenMai;
+
+                            }
+                        }
+                    }
+                    DH.MaKhuyenMai = MaKM_TextBox.Text;
+
+                }
+
+                DH.CachThanhToan = CachThanhToan_ComboBox.SelectedIndex+1;
+                if (DH.CachThanhToan == 2)
+                {
+                    DH.TinhTrang = 2;
                 }
                 else
                 {
-                  
-                   
-                    KH.TenKhachHang = TenKH_TextBox.Text;
-                    KH.SoDienThoai = SDT_TextBox.Text;
-                    KH.DiaChi = DC_TextBox.Text;
-                    //KH.isDelete = false;
-
-                    var db1 = new QuanLyCuaHangEntities();
-                    db1.KhachHangs.Add(KH);
-
-                    db1.SaveChanges();
-                   
-
-              
-                 
-                  
-                    if (MaKM_TextBox.Text != "")
-                    {
-
-                        var db4 = new QuanLyCuaHangEntities();
-                        var KMs = db4.KhuyenMais.ToList();
-                        if (KMs != null)
-                        {
-                            for (int i = 0; i < KMs.Count(); i++)
-                            {
-                                if (MaKM_TextBox.Text == KMs[i].MaKhuyenMai)
-                                {
-                                    //km = KMs[i].MucKM;
-                                    
-                                }
-                            }
-                        }
-                        DH.MaKhuyenMai = MaKM_TextBox.Text;
-                        
-                    }
-
-                    //DH.TrangThai = dsTT[TrangThai_ComboBox.SelectedIndex].TrangThai1;
-
-                    DH.ThoiGian = DateTime.Now;
-                    for (int i = 0; i < datas.Count(); i++)
-                    {
-                       
-                        DH.MaSanPham = datas[i].maSP;
-                        DH.Gia = datas[i].GiaBan*km/100;
-                        DH.SoLuong = datas[i].SoLuong;
-                        var db3 = new QuanLyCuaHangEntities();
-                        var sanpham = db3.SanPhams.Find(DH.MaSanPham);
-                        if (sanpham.SoLuongConLai >= DH.SoLuong)
-                        {
-                            sanpham.SoLuongConLai -= DH.SoLuong;
-                           
-                            db3.SaveChanges();
-                            var db2 = new QuanLyCuaHangEntities();
-                            db2.DonHangs.Add(DH);
-                            db2.SaveChanges();
-                            kiemTra = 1;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Sản phẩm " + datas[i].TenSP + " không đủ vui lòng xem lại");
-                            kiemTra = 0;
-                            break;
-                           
-                        }
-                       
-                    }
-                    if (kiemTra == 1)
-                    {
-                        MessageBox.Show("Giao dịch thành công!");
-                        datas.Clear();
-                        sanPhams.Clear();
-                        Page_Loaded(null, null);
-                        DanhSachSPDataGrid_Loaded(null, null);
-                        CachThanhToan_ComboBox.SelectedIndex = -1;
-                        TenKH_TextBox.Text = "";
-                        DC_TextBox.Text = "";
-                        SDT_TextBox.Text = "";
-                        TongTien_TextBlock.Text = "";
-                    }
+                    DH.TinhTrang = 1;
                 }
-            
+                DH.ThoiGian = DateTime.Now;
+                for (int i = 0; i < datas.Count(); i++)
+                {
+                    DonHang_Bus donHangs = new DonHang_Bus();
+                    DH.MaDongHang = donHangs.LoadAll().Count()-i;
+                    DH.MaSanPham = datas[i].maSP;
+                    DH.Gia = datas[i].GiaBan * km / 100;
+                    DH.SoLuong = datas[i].SoLuong;
+
+                    SanPham_Bus sanPham_Bus = new SanPham_Bus();
+                    var sanpham = sanPham_Bus.FindByID(DH.MaSanPham);
+                    if (sanpham.SoLuongConLai >= DH.SoLuong)
+                    {
+                        sanpham.SoLuongConLai -= DH.SoLuong;
+                        sanPham_Bus.EditSanPham(sanpham);
+                        DonHang_Bus donHang_Bus = new DonHang_Bus();
+
+                        donHang_Bus.AddDonHang(DH);
+                        
+                        kiemTra = 1;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sản phẩm " + datas[i].TenSP + " không đủ vui lòng xem lại");
+                        kiemTra = 0;
+                        break;
+
+                    }
+
+                }
+                if (kiemTra == 1)
+                {
+                    MessageBox.Show("Giao dịch thành công!");
+                    datas.Clear();
+                    sanPhams.Clear();
+                    Page_Loaded(null, null);
+                    DanhSachSPDataGrid_Loaded(null, null);
+                    CachThanhToan_ComboBox.SelectedIndex = -1;
+                    TenKH_TextBox.Text = "";
+                    DC_TextBox.Text = "";
+                    SDT_TextBox.Text = "";
+                    TongTien_TextBlock.Text = "";
+                }
+            }
+
             //catch (Exception)
             //{
             //    MessageBox.Show("Giao dịch k thành công!");
             //}
         }
 
-      
+
 
         private void PlusButton_Click(object sender, RoutedEventArgs e)
         {
             datas[DanhSachSPDataGrid.SelectedIndex].SoLuong += 1;
-            datas[DanhSachSPDataGrid.SelectedIndex].GiaBan +=sanPhams[DanhSachSPDataGrid.SelectedIndex].GiaBan;
+            datas[DanhSachSPDataGrid.SelectedIndex].GiaBan += sanPhams[DanhSachSPDataGrid.SelectedIndex].GiaBan;
             tongTien += sanPhams[DanhSachSPDataGrid.SelectedIndex].GiaBan;
             TongTien_TextBlock.Text = tongTien.ToString();
             DanhSachSPDataGrid_Loaded(null, null);
@@ -231,11 +240,11 @@ namespace Final_ManagementSystem
                 TongTien_TextBlock.Text = tongTien.ToString();
                 datas.RemoveAt(DanhSachSPDataGrid.SelectedIndex);
                 sanPhams.RemoveAt(DanhSachSPDataGrid.SelectedIndex);
-                
+
                 DanhSachSPDataGrid_Loaded(null, null);
             }
         }
 
-       
+
     }
 }

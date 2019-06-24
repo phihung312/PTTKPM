@@ -1,4 +1,4 @@
-﻿using Final_ManagementSystem.GUI;
+﻿
 using Fluent;
 using System;
 using System.Collections.Generic;
@@ -49,7 +49,7 @@ namespace Final_ManagementSystem
                 },
                  new TabItem() {
                     Content = new Frame() {
-                        Content = new DonHang()
+                        Content = new QuanLyDonHang()
                     },
                 }
              };
@@ -124,7 +124,7 @@ namespace Final_ManagementSystem
             {
                 new TabItem() {
                     Content = new Frame() {
-                        Content = new DonHang()
+                        Content = new QuanLyDonHang()
                     },
                 },
             };

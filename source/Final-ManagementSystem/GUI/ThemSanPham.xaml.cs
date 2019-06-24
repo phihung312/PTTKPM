@@ -97,12 +97,11 @@ namespace Final_ManagementSystem
                 sanPham.isDelete = 0;
        
                 sanPham.SoLuongConLai = int.Parse(Soluong_Textbox.Text);
-              
-                sanPham_Bus.AddSanPham(sanPham);
-              
-                MessageBox.Show("Thêm thành công");
-                Close();
-
+                if (sanPham_Bus.AddSanPham(sanPham))
+                {
+                    MessageBox.Show("Thêm thành công");
+                    Close();
+                }
             }
             catch (Exception)
             {
